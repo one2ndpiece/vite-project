@@ -24,7 +24,7 @@ const ItemCard: React.FC<{ item: Item }> = ({ item }) => {
                     onMouseLeave={() => setIsHovered(false)}
                 >
                     <CardHeader>
-                        <img src={`src/data/images/14.13.1/${item.image}`} alt="item thumbnail" style={{ width: '150px', height: '150px' }} />
+                        <img src={`/images/14.13.1/${item.image}`} alt="item thumbnail" style={{ width: '150px', height: '150px' }} />
                         <CardTitle className="text-blue-400">{item.name}</CardTitle>
                     </CardHeader>
                     <CardContent>
