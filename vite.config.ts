@@ -11,8 +11,13 @@ export default defineConfig({
   resolve: {  // Added
     alias: {  // Added
       "@": path.resolve(__dirname, "./src"),  // Added
+      "src": path.resolve(__dirname, "./src"),  // Added
     },  // Added
   },  // Added
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // 'import.meta.env.VITE_PUBLIC_URL': JSON.stringify(process.env.VITE_PUBLIC_URL || '')
+  },
   // build: {
   //   outDir: 'dist'
   // },
