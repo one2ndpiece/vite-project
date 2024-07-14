@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { FaTachometerAlt, FaHome, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ItemsDashboard from 'src/components/customs/ItemsDashboard/ItemsDashboard';
@@ -19,12 +19,8 @@ const EntryPage: React.FC = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    useEffect(() => {
-        console.log("Current path:", window.location.pathname);
-    }, []);
-
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <div className="flex h-screen bg-gray-900">
                 <aside className={`bg-gray-800 text-white h-full p-4 transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-16'}`}>
                     <button onClick={toggleSidebar} className="text-blue-300 hover:text-blue-500 mb-4 w-full flex justify-end">
@@ -49,8 +45,9 @@ const EntryPage: React.FC = () => {
                 </aside>
                 <main className="flex-1 p-4 overflow-auto">
                     <Routes>
-                        <Route path="/dashboard" element={<ItemsDashboard />} />
                         <Route path="/" element={<DefaultPage />} />
+                        <Route path="/dashboard" element={<ItemsDashboard />} />
+                        <Route path="*" element={<DefaultPage />} />
                     </Routes>
                 </main>
             </div>
