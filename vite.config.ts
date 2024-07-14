@@ -5,8 +5,8 @@ import path from "path"  // Added
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.GITHUB_PAGES
-    ? "/vite-project/"  // リポジトリ名に合わせて設定
-    : "./",
+    ? "/vite-project/"  // GitHub Pagesを使用する場合のパス
+    : "/",  // ローカル開発やその他の環境での基本パス
   plugins: [react()],
   resolve: {  // Added
     alias: {  // Added
@@ -16,7 +16,7 @@ export default defineConfig({
   },  // Added
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    // 'import.meta.env.VITE_PUBLIC_URL': JSON.stringify(process.env.VITE_PUBLIC_URL || '')
+    'import.meta.env.BASE_URL': JSON.stringify(process.env.GITHUB_PAGES ? "/vite-project/" : "/"),
   },
   // build: {
   //   outDir: 'dist'
